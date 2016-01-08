@@ -4,8 +4,18 @@
 	</head>
 	
 	<body>	
-		<p> Job Openings!</p>
-		<p>Right here on Zaposta.com</p>
+		<div>
+			<h1>Job Openings!</h1>
+			<p>Right here on Zaposta.com</p>
+		</div>
+		{% for post in posts %}
+			<div>
+				<p>published: {{ post.published_date }}</p>
+				<h2><a href="">{{ post.title}}</a></h2>
+				<p>{{ post.text|linebreaks }}</p>
+			</div>
+		{%endfor %}
+		
 	</body>
 	
 </html>
