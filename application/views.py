@@ -68,7 +68,7 @@ def new_form(request, pk):
 			form.job_opening = job_opening
 		
 			MBA = request.POST.get("MBA") # the selected option
-			Formal_Finance_Training = request.POST.get("Formal_Finance_Training")
+			Formal_Training = request.POST.get("Formal_Training")
 			Employment_Status = request.POST.get('Employment_Status')
 			Equity = request.POST.get('Equity')
 			Salary_for_equity = request.POST.get('Salary_for_equity')
@@ -85,10 +85,11 @@ def new_form(request, pk):
 			
 			
 			exp_ans = ['Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 'Yes', 'None', 'All', 'No', 'No', 'No']
-			selection = [MBA,Formal_Finance_Training, Employment_Status, Equity, Salary_for_equity, Job_Salary, Job_Time, Told_What_to_do, Entrepreneur, Dislikes, Get_along_with, Gay_people, Muslims, Christians]
+			selection = [MBA,Formal_Training, Employment_Status, Equity, Salary_for_equity, Job_Salary, Job_Time, Told_What_to_do, Entrepreneur, Dislikes, Get_along_with, Gay_people, Muslims, Christians]
 			print selection
+			post.save()
 			if exp_ans == selection:
-				post.save()
+				#post.save()
 				job_opening.save()
 				return redirect(reverse('application:results'))
 						#return HttpResponse("Application submitted Successfully")
@@ -111,6 +112,8 @@ def new_form(request, pk):
 def rsa(request, pk):
 	job_opening = JobOpenings.objects.get(pk = pk)
 	print job_opening
+	test = request.POST
+	print test
 	if request.method == "POST":
 		form = RsaForm(request.POST)
 		if form.is_valid():
@@ -137,7 +140,7 @@ def rsa(request, pk):
 			
 			
 			exp_ans = ['Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 'Yes', 'None', 'All', 'No', 'No', 'No']
-			selection = [MBA, Formal_Business_Training, Employment_Status, Equity, Salary_for_equity, Job_Salary, Job_Time, Told_What_to_do, Entrepreneur, Dislikes, Get_along_with, Gay_people, Muslims, Christians]
+			selection = [MBA, Formal_Training, Employment_Status, Equity, Salary_for_equity, Job_Salary, Job_Time, Told_What_to_do, Entrepreneur, Dislikes, Get_along_with, Gay_people, Muslims, Christians]
 			print selection
 			if exp_ans == selection:
 				post.save()

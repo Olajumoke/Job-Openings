@@ -19,7 +19,7 @@ class QuestionnaireForm(forms.ModelForm):
 	# Muslims = models.CharField(max_length=10, choices=STATUS)
 	# Christians = models.CharField(max_length=10, choices=STATUS)
 	
-	Description = forms.CharField(label="", widget=forms.Textarea(attrs = {'placeholder':"Please describe the trainings"}))
+	Description = forms.CharField(label="", required=False, widget=forms.Textarea(attrs = {'placeholder':"Please describe the trainings"}))
 	
 	class Meta:
 		model = Questionnaire
@@ -35,7 +35,7 @@ class QuestionnaireForm(forms.ModelForm):
 		
 		
 class RsaForm(forms.ModelForm):
-	Description = forms.CharField(label="", widget=forms.Textarea(attrs = {'placeholder':"Please describe the trainings"}))
+	Description = forms.CharField(label="", required=False, widget=forms.Textarea(attrs = {'placeholder':"Please describe the trainings"}))
 	
 	class Meta:
 		model = Rsa

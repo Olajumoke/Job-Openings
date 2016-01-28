@@ -59,9 +59,9 @@ class Questionnaire(models.Model):
 	job_opening = models.ForeignKey(JobOpenings, null=True,blank=True, default="")
 	MBA = models.CharField(max_length=10, choices=STATUS, verbose_name="Do you have an MBA?")
 	Formal_Training = models.CharField(max_length=10, choices=STATUS, verbose_name="Do you have formal training in finance")
-	Description = models.TextField(default="", max_length=250, verbose_name="Describe the trainings you have acquired")
-	Employment_Status = models.CharField(max_length=10, choices=STATUS, verbose_name="Are you currently employed")
-	Employment_Fields = models.CharField(max_length=20, choices =FINANCE, verbose_name="Select any of the following fields that represent your experience")
+	Description = models.TextField(default="", max_length=250, verbose_name="Describe the trainings you have acquired", blank=True, null=True)
+	Employment_Status = models.CharField(max_length=100, choices=STATUS, verbose_name="Are you currently employed")
+	Employment_Fields = models.CharField(max_length=200, choices =FINANCE, verbose_name="Select any of the following fields that represent your experience")
 	Equity = models.CharField(max_length=10, choices=STATUS, verbose_name="Do you care about having equity?")
 	Salary_for_equity = models.CharField(max_length=10, choices=STATUS, verbose_name="Are you willing to trade a portion of salary for equity? ")
 	Job_Salary = models.CharField(max_length=10, choices=STATUS, verbose_name="Can you live on N250,000 or less for the next 9 months?")
@@ -77,34 +77,15 @@ class Questionnaire(models.Model):
 	def __str__(self):
 		return self.job_opening.title
 		
-# class SelectiveQuestions(models.Model):
-	# job_opening = models.ForeignKey(JobOpenings, null=True, blank=True)
-	# question_text = models.CharField(max_length=50)
-	# pub_date = models.DateTimeField(blank=True, null=True)
-	# created_on = models.DateTimeField(default=timezone.now)
-	
-	# def publish(self):
-		# self.published_date = timezone.now()
-		# self.save()
-	
-	# def __str__(self):
-		# return self.question_text
-		
 
-# class Choices(models.Model):
-	# question = models.ForeignKey(SelectiveQuestions, null=True, blank=True)
-	# choice_text = models.CharField(max_length=20)
-	
-	# def __str__(self):
-		# return self.question.question_text
 	
 class Rsa(models.Model):
 	job_opening = models.ForeignKey(JobOpenings, null=True,blank=True, default="")
 	MBA = models.CharField(max_length=10, choices=STATUS, verbose_name="Do you have an MBA?")
-	Formal_Training = models.CharField(max_length=10, choices=STATUS, verbose_name="Do you have formal training in Business development")
-	Description = models.TextField(default="", max_length=250, verbose_name="Describe the trainings you have acquired")
-	Employment_Status = models.CharField(max_length=10, choices=STATUS, verbose_name="Are you currently employed")
-	Employment_Fields = models.CharField(max_length=20, choices =SALES, verbose_name="Select any of the following fields that represent your experience")
+	Formal_Training = models.CharField(max_length=250, choices=STATUS, verbose_name="Do you have formal training in Business development")
+	Description = models.TextField(default="", max_length=250, verbose_name="Describe the trainings you have acquired", blank=True, null=True)
+	Employment_Status = models.CharField(max_length=250, choices=STATUS, verbose_name="Are you currently employed")
+	Employment_Fields = models.CharField(max_length=200, choices =SALES, verbose_name="Select any of the following fields that represent your experience")
 	Client_acquisition = models.TextField(verbose_name="Tell us how you intend to approach client acquisition")
 	Client_retention = models.TextField(verbose_name="Tell us how you intend to approach client retention")
 	Equity = models.CharField(max_length=10, choices=STATUS, verbose_name="Do you care about having equity?")
