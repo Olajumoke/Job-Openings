@@ -10,4 +10,18 @@
 		<h1>{{ post.title }}</h1>
 		<p>{{ post.text|linebreaks }}</p>
     </div>
+		{% if post.id == 1 %}
+			<div>
+			<a href="{% url 'application:new_form' pk=pk%}">If interested please apply here</a>
+		{% else %}
+			<a href="{% url 'application:rsa' pk=pk%}">If interested please apply here</a>
+		{% endif %}
+			</div>
+	
+	
+	
+	
 {% endblock %}
+
+
+

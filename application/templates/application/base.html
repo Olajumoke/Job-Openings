@@ -6,6 +6,25 @@
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="{% static 'css/application.css' %}">
 		<link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script> - 
+		
+		<script>
+			$(document).ready(function(){
+				$("#id_Description").hide();
+					$('#id_Formal_Training').click('change', function() {
+						if ( this.value == 'Yes')
+							{
+								$("#id_Description").show();
+							}
+						else
+							{
+								$("#id_Description").hide();
+							}
+					});
+			});
+				
+		</script>
+	
 	</head>
 	
 	<body>	

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Skill&Fitness Test</title>
+	</head>
+	<body>
+	{{ pk }}
+	<form action="{% url 'application:process' pk=pk %}" method="post">
+		{%csrf_token %}
+		<p>Do you have an MBA?</p>
+		<select name="MBA">
+			<option value="yes" >Yes</option>
+			<option value="no">No</option>
+			<!-- <input type="radio" name="MBA" id="choice1" value="1">YES</input>
+			<input type="radio" name="MBA" id="choice2" value="2">NO</input></br> -->
+		</select>
+		</br>
+		
+		<p>Do you have a formal training in Finance?</p>
+		<select name="Formal_Finance_Training">
+			<option value="yes">Yes</option>
+			<option value="no">No</option>
+		</select>
+		</br>
+		
+		<p>Are you currently employed?</p>
+		<select name="Employment_Status">
+			<option value="yes">Yes</option>
+			<option value="no">No</option>
+		</select>
+		</br>
+		
+		<p>Select any of the following fields that represent your experience</p>
+		<select name="Employment_Fields">
+			<option value = "Mergers and Acquisitions or Stock Trading - 5 years and above">Mergers and Acquisitions or Stock Trading - 5 years and above</option>
+			<option value="Previous CFO Position - 3 years and above">Previous CFO Position - 3 years and above</option>
+			<option value = "Previous CEO Position - 3 years and above">Previous CEO Position - 3 years and above</option>
+			<option value ="Senior level Auditor - 3 years and above">Senior level Auditor - 3 years and above</option>
+		</select>
+		</br>
+		
+		<p>Do you care about having equity?</p>
+		<select name="Equity">
+			<option value="yes">Yes</option>
+			<option value="no">No</option>
+		</select>
+		</br>
+		
+		<p>Are you willing to trade a portion of salary for equity?</p>
+		<select name="Salary_for_equity">
+			<option value="yes">Yes</option>
+			<option value="no">No</option>
+		</select>
+		</br>
+		
+		<p>Can you live on N250,000 or less for the next 9 months?</p>
+		<select name="Job_Salary">
+			<option value="yes">Yes</option>
+			<option value="no">No</option>
+		</select>
+		</br>
+		
+		<p>I just want a 9-5 job to pay the bills.</p>
+		<select name="Job_Time">
+			<option value="yes">Yes</option>
+			<option value="no">No</option>
+		</select>
+		</br>
+		
+		<p>I like to be told what to do.</p>
+		<select name="Told_What_to_do">
+			<option value="yes">Yes</option>
+			<option value="no">No</option>
+		</select>
+		</br>
+		
+		<p>I am an entrepreneur at heart.</p>
+		<select name="Entrepreneur">
+			<option value="yes">Yes</option>
+			<option value="no">No</option>
+		</select>
+		</br>
+		
+		<p>Who do you dislike the most?</p>
+		<select name="Dislikes">
+			<option value="Igbos">Igbos</option>
+			<option value="Yorubas">Yorubas</option>
+			<option value="Northerners">Northerners</option>
+			<option value="Southerners">Southerners</option>
+			<option value="None">None</option>
+		</select>
+		</br>
+		
+		<p>Who do you get along with?</p>
+		<select name="Get_along_with">
+			<option value="Men">Men</option>
+			<option value="Women">Women</option>
+			<option value="All">All</option>
+		</select>
+		</br>
+		
+		<p>Gay people are disgusting and should be put in jail.</p>
+		<select name="Gay_people">
+			<option value="yes">Yes</option>
+			<option value="no">No</option>
+		</select>
+		</br>
+		
+		<p>I can't stand Muslims.</p>
+		<select name="Muslims">
+			<option value="yes">Yes</option>
+			<option value="no">No</option>
+		</select>
+		</br>
+		
+		<p>Christians and others are infidels.</p>
+		<select name="Christians">
+			<option value="yes">Yes</option>
+			<option value="no">No</option>
+		</select>
+		</br>
+		</br>
+		</br>
+	<input type ="submit" value="Submit" name = "submit">
+	</form>	
+	</body>
+</html>
+
+		
+		
+		
