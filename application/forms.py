@@ -23,7 +23,8 @@ class QuestionnaireForm(forms.ModelForm):
 	
 	class Meta:
 		model = Questionnaire
-		exclude = ['job_opening']
+		#fields = '__all__'
+		exclude = ['job_opening', 'succesful_applicant']
 		
 		
 
@@ -39,4 +40,5 @@ class RsaForm(forms.ModelForm):
 	
 	class Meta:
 		model = Rsa
-		exclude= ['job_opening']
+		#fields = '__all__'
+		exclude= ['job_opening', 'succesful_applicant']

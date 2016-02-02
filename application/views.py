@@ -61,12 +61,12 @@ def QuestionnaireResults(request):
 def new_form(request, pk):
 	job_opening = JobOpenings.objects.get(pk = pk)
 	print job_opening
+	print request.POST
 	if request.method == "POST":
 		form = QuestionnaireForm(request.POST)
 		if form.is_valid():
 			post = form.save(commit=False)
-			form.job_opening = job_opening
-		
+			post.job_opening = job_opening		
 			MBA = request.POST.get("MBA") # the selected option
 			Formal_Training = request.POST.get("Formal_Training")
 			Employment_Status = request.POST.get('Employment_Status')
@@ -84,16 +84,19 @@ def new_form(request, pk):
 			Description = request.POST.get('Description')
 			
 			
-			exp_ans = ['Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 'Yes', 'None', 'All', 'No', 'No', 'No']
-			selection = [MBA,Formal_Training, Employment_Status, Equity, Salary_for_equity, Job_Salary, Job_Time, Told_What_to_do, Entrepreneur, Dislikes, Get_along_with, Gay_people, Muslims, Christians]
-			print selection
-			post.save()
-			if exp_ans == selection:
-				#post.save()
+			
+			exp_ans = ['Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 'Yes', 'None', 'All', 'No', 'No']
+			selection = [MBA,Formal_Training, Employment_Status, Equity, Salary_for_equity, Job_Salary, Job_Time, Told_What_to_do, Entrepreneur, Dislikes, Get_along_with, Muslims, Christians]
+			#print selection
+			
+			if exp_ans == selection and Gay_people != "Definitely":
+				post.succesful_applicant = True
 				job_opening.save()
+				post.save()
 				return redirect(reverse('application:results'))
 						#return HttpResponse("Application submitted Successfully")
 			else:
+				post.save()
 				return HttpResponse("You did not meet the required criteria for a succesful submission")
 				#return redirect('post_detail', pk=post.pk)
 	else:
@@ -112,13 +115,11 @@ def new_form(request, pk):
 def rsa(request, pk):
 	job_opening = JobOpenings.objects.get(pk = pk)
 	print job_opening
-	test = request.POST
-	print test
 	if request.method == "POST":
 		form = RsaForm(request.POST)
 		if form.is_valid():
 			post = form.save(commit=False)
-			form.job_opening = job_opening
+			post.job_opening = job_opening
 		
 			MBA = request.POST.get("MBA") # the selected option
 			Formal_Training = request.POST.get("Formal_Training")
@@ -139,15 +140,18 @@ def rsa(request, pk):
 			Client_retention = request.POST.get('Client_retention')
 			
 			
-			exp_ans = ['Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 'Yes', 'None', 'All', 'No', 'No', 'No']
-			selection = [MBA, Formal_Training, Employment_Status, Equity, Salary_for_equity, Job_Salary, Job_Time, Told_What_to_do, Entrepreneur, Dislikes, Get_along_with, Gay_people, Muslims, Christians]
-			print selection
-			if exp_ans == selection:
+			exp_ans = ['Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 'Yes', 'None', 'All', 'No', 'No']
+			selection = [MBA, Formal_Training, Employment_Status, Equity, Salary_for_equity, Job_Salary, Job_Time, Told_What_to_do, Entrepreneur, Dislikes, Get_along_with, Muslims, Christians]
+			#print selection
+			
+			if exp_ans == selection and Gay_people != "Definitely":
+				post.succesful_applicant = True
 				post.save()
 				job_opening.save()
 				return redirect(reverse('application:results'))
 						#return HttpResponse("Application submitted Successfully")
 			else:
+				post.save()
 				return HttpResponse("You did not meet the required criteria for a succesful submission")
 				#return redirect('post_detail', pk=post.pk)
 	else:

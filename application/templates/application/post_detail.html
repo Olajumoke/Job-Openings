@@ -10,7 +10,7 @@
 		<h1>{{ post.title }}</h1>
 		<p>{{ post.text|linebreaks }}</p>
     </div>
-		{% if post.id == 1 %}
+		{% if post.title == "Chief Finance Officer" %}
 			<div>
 			<a href="{% url 'application:new_form' pk=pk%}">If interested please apply here</a>
 		{% else %}
